@@ -2489,26 +2489,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@hono/oauth-providers@workspace:packages/oauth-providers":
-  version: 0.0.0-use.local
-  resolution: "@hono/oauth-providers@workspace:packages/oauth-providers"
-  dependencies:
-    "@cloudflare/workers-types": "npm:^4.20231025.0"
-    "@types/jest": "npm:^29.5.7"
-    hono: "npm:^3.11.7"
-    jest: "npm:^29.7.0"
-    jest-environment-miniflare: "npm:^2.14.1"
-    msw: "npm:^2.0.11"
-    patch-package: "npm:^8.0.0"
-    publint: "npm:^0.2.6"
-    ts-jest: "npm:^29.1.1"
-    tsup: "npm:^8.0.0"
-    typescript: "npm:^5.2.2"
-  peerDependencies:
-    hono: ">=3.*"
-  languageName: unknown
-  linkType: soft
-
 "@hono/oidc-auth@workspace:packages/oidc-auth":
   version: 0.0.0-use.local
   resolution: "@hono/oidc-auth@workspace:packages/oidc-auth"
@@ -3801,6 +3781,26 @@ __metadata:
   checksum: b08ae12f32e4c85c656dad06e96133020dd2388b111184a9c4313de6855c56d7f85b9e57bb0cf0a313253a0a7c37f29257c1c37bcf1b6bb9e99decf0726c80ea
   languageName: node
   linkType: hard
+
+"@ngreimel/honojs-oauth-providers@workspace:packages/oauth-providers":
+  version: 0.0.0-use.local
+  resolution: "@ngreimel/honojs-oauth-providers@workspace:packages/oauth-providers"
+  dependencies:
+    "@cloudflare/workers-types": "npm:^4.20231025.0"
+    "@types/jest": "npm:^29.5.7"
+    hono: "npm:^3.11.7"
+    jest: "npm:^29.7.0"
+    jest-environment-miniflare: "npm:^2.14.1"
+    msw: "npm:^2.0.11"
+    patch-package: "npm:^8.0.0"
+    publint: "npm:^0.2.6"
+    ts-jest: "npm:^29.1.1"
+    tsup: "npm:^8.0.0"
+    typescript: "npm:^5.2.2"
+  peerDependencies:
+    hono: ">=3.*"
+  languageName: unknown
+  linkType: soft
 
 "@nodelib/fs.scandir@npm:2.1.5":
   version: 2.1.5
