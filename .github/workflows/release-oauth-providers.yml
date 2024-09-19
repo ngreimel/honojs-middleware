@@ -1,0 +1,28 @@
+name: release-oauth-providers
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'packages/oauth-providers/**'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    defaults:
+      run:
+        working-directory: ./packages/oauth-providers
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18.x
+          registry-url: 'https://npm.pkg.github.com'
+      - run: yarn install --frozen-lockfile
+      - run: yarn build
+      - run: yarn test
+      - run: yarn npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

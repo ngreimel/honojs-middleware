@@ -23,6 +23,7 @@ export class AuthFlow {
   redirect_uri: string
   code: string | undefined
   token: Token | undefined
+  refresh_token: Token | undefined
   scope: string[]
   state: string | undefined
   login_hint: string | undefined
@@ -52,6 +53,7 @@ export class AuthFlow {
     this.state = state
     this.code = code
     this.token = token
+    this.refresh_token = undefined
     this.user = undefined
     this.granted_scopes = undefined
     this.access_type = access_type
@@ -106,6 +108,14 @@ export class AuthFlow {
       this.token = {
         token: response.access_token,
         expires_in: response.expires_in,
+        expires_at: new Date(Date.now() + response.expires_in * 1000),
+      }
+
+      if ('refresh_token' in response) {
+        this.refresh_token = {
+          token: response.refresh_token!,
+          expires_in: NaN,
+        }
       }
 
       this.granted_scopes = response.scope.split(' ')

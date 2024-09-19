@@ -13,6 +13,7 @@ export type GoogleTokenResponse = {
   scope: string
   token_type: string
   id_token: string
+  refresh_token?: string
 }
 
 export type GoogleTokenInfoResponse = {

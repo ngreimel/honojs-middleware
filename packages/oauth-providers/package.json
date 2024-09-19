@@ -1,5 +1,5 @@
 {
-  "name": "@hono/oauth-providers",
+  "name": "@ngreimel/honojs-oauth-providers",
   "version": "0.6.1",
   "description": "Social login for Hono JS, integrate authentication with facebook, github, google and linkedin to your projects.",
   "main": "dist/index.js",
@@ -125,5 +125,12 @@
   },
   "engines": {
     "node": ">=18.4.0"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ngreimel/honojs-middleware.git"
   }
 }

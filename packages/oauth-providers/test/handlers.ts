@@ -19,9 +19,19 @@ export const handlers = [
     async ({
       request,
     }): Promise<StrictResponse<Partial<GoogleTokenResponse> | GoogleErrorResponse>> => {
-      const body = (await request.json()) as Promise<DefaultBodyType> & { code: string }
+      const body = (await request.json()) as Promise<DefaultBodyType> & { code: string, grant_type: string }
       if (body.code === dummyCode) {
         return HttpResponse.json(dummyToken)
+      }
+      if (body.grant_type === 'refresh_token') {
+        if ('refresh_token' in body) {
+          const { refresh_token } = body
+          if (refresh_token === 'bad-token') {
+            return HttpResponse.json(googleTokenError)
+          }
+          return HttpResponse.json(dummyToken)
+        }
+        return HttpResponse.json(googleTokenError)
       }
       return HttpResponse.json(googleCodeError)
     }
@@ -153,6 +163,7 @@ export const dummyToken = {
   access_token: '15d42a4d-1948-4de4-ba78-b8a893feaf45',
   expires_in: 60000,
   scope: 'openid email profile',
+  expires_at: new Date(Date.now() + 60000 * 1000),
 }
 
 export const googleUser = {

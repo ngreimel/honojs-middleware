@@ -1,3 +1,6 @@
+> [!WARNING]  
+> This repository is a fork of `github.com/honojs/middleware`. Please read the [changes doc](CHANGES-FROM-UPSTREAM.md) before deciding if this is right for you.
+
 # monorepo for Hono third-party middleware
 
 This repository is monorepo for third-party middleware of Hono.
