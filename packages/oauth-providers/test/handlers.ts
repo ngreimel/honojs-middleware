@@ -27,9 +27,11 @@ export const handlers = [
         if ('refresh_token' in body) {
           const { refresh_token } = body
           if (refresh_token === 'bad-token') {
-            return HttpResponse.json(googleTokenError)
+            return HttpResponse.json(googleTokenError, { status: 400 })
+          } else if (refresh_token === 'new-token') {
+            return HttpResponse.json({ ...googleRefreshToken, ...{ refresh_token: 'new-token' }})
           }
-          return HttpResponse.json(dummyToken)
+          return HttpResponse.json(googleRefreshToken)
         }
         return HttpResponse.json(googleTokenError)
       }
@@ -163,7 +165,6 @@ export const dummyToken = {
   access_token: '15d42a4d-1948-4de4-ba78-b8a893feaf45',
   expires_in: 60000,
   scope: 'openid email profile',
-  expires_at: new Date(Date.now() + 60000 * 1000),
 }
 
 export const googleUser = {
@@ -203,6 +204,12 @@ const googleTokenInfo = {
   email: 'example@email.com',
   verified_email: true,
   access_type: 'user',
+}
+export const googleRefreshToken = {
+  access_token: 'isdFho34isdX6hd3vODOFFNubUEBosihjcXifjdC34dsdsd349Djs9cgSA2',
+  expires_in: 3600,
+  scope: 'openid email profile',
+  token_type: 'Bearer',
 }
 
 export const facebookUser = {

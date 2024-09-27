@@ -29,10 +29,6 @@ export function googleAuth(options: {
       scope: options.scope,
       state: newState,
       code: c.req.query('code'),
-      token: {
-        token: c.req.query('access_token') as string,
-        expires_in: Number(c.req.query('expires-in')) as number,
-      },
     })
 
     // Redirect to login dialog
